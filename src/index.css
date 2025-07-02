@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* animation */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-border {
+  background: linear-gradient(270deg, #f03a3a , white , #09cffb ,white , #3823db ,white ,#09cffb , white , #f03a3a , #f03a3a , white , #09cffb ,white , #3823db ,white ,#09cffb , white , #f03a3a); 
+  background-size: 300% 300%;
+  animation: gradient-move 40s ease infinite;
+  padding: 3px;
+  border-radius: 16px;
+}
+
+/*theme color  */
+@theme {
+  --color-myPrimary: #50b8e7 ;
+  --color-mySecondary: 		#84cdee;
+}
+
