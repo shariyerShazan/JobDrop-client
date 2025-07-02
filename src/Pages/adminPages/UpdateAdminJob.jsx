@@ -73,17 +73,22 @@ function UpdateAdminJob() {
   };
 
   if (!jobData) {
-    return <div className="flex justify-center items-center flex-col py-20 text-myPrimary">
-                <div className="animate-spin text-4xl mb-4">
-                  <FaSpinner size={100}/>
-                </div>
-                <p className="text-lg font-medium">Loading, please wait...</p>
-              </div>;
+    return (
+      <div className="flex justify-center items-center flex-col py-20 text-myPrimary">
+        <div className="animate-spin text-4xl mb-4">
+          <FaSpinner size={100} />
+        </div>
+        <p className="text-lg font-medium">Loading, please wait...</p>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen py-10 px-4">
-      <div data-aos="fade-up" className="max-w-6xl mx-auto bg-white p-6 shadow-xl rounded-xl">
+      <div
+        data-aos="fade-up"
+        className="max-w-6xl mx-auto bg-white p-6 shadow-xl rounded-xl"
+      >
         <h2 className="text-3xl font-bold text-center mb-6 flex items-center justify-center gap-2 text-myPrimary">
           <MdWork className="text-4xl animate-bounce" /> Update Job
         </h2>
@@ -92,49 +97,65 @@ function UpdateAdminJob() {
           <div className="grid md:grid-cols-2 gap-6">
             {/* Left */}
             <div className="flex flex-col gap-4" data-aos="fade-right">
-              <div className="flex items-center gap-2">
-                <FaFileAlt size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="title"
-                  defaultValue={jobData.title}
-                  placeholder="Job title"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Job Title</label>
+                <div className="flex items-center gap-2">
+                  <FaFileAlt size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="title"
+                    defaultValue={jobData.title}
+                    placeholder="Job title"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <RiMoneyDollarCircleFill size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="number"
-                  name="salary"
-                  defaultValue={jobData.salary}
-                  placeholder="Salary in LPA"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Salary</label>
+                <div className="flex items-center gap-2">
+                  <RiMoneyDollarCircleFill size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="number"
+                    name="salary"
+                    defaultValue={jobData.salary}
+                    placeholder="Salary in LPA"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <DiRequirejs size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="requirements"
-                  defaultValue={jobData.requirements.join(", ")}
-                  placeholder="Requirements"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                />
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Requirements</label>
+                <div className="flex items-center gap-2">
+                  <DiRequirejs size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="requirements"
+                    defaultValue={jobData.requirements.join(", ")}
+                    placeholder="Requirements"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                  />
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <IoLocationSharp size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="location"
-                  defaultValue={jobData.location}
-                  placeholder="Office location"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Location</label>
+                <div className="flex items-center gap-2">
+                  <IoLocationSharp size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="location"
+                    defaultValue={jobData.location}
+                    placeholder="Office location"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
+
               <img
                 src="https://thumbs.dreamstime.com/b/job-logo-design-vector-job-search-icon-magnifying-glass-choose-people-hire-symbol-job-employee-logo-job-logo-design-239526625.jpg"
                 alt="office"
@@ -145,63 +166,83 @@ function UpdateAdminJob() {
 
             {/* Right */}
             <div className="flex flex-col gap-4" data-aos="fade-left">
-              <textarea
-                name="description"
-                defaultValue={jobData.description}
-                placeholder="Description about job"
-                className="border-2 border-mySecondary w-full p-2 rounded-md h-[100px]"
-                required
-              ></textarea>
-              <div className="flex gap-2">
-                <select
-                  name="experienceLevel"
-                  defaultValue={jobData.experienceLevel}
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Job Description</label>
+                <textarea
+                  name="description"
+                  defaultValue={jobData.description}
+                  placeholder="Description about job"
+                  className="border-2 border-mySecondary w-full p-2 rounded-md h-[100px]"
                   required
-                >
-                  <option value="Entry level">Entry level</option>
-                  <option value="Mid level">Mid level</option>
-                  <option value="Senior">Senior</option>
-                </select>
-                <select
-                  name="jobType"
-                  defaultValue={jobData.jobType}
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                >
-                  <option value="Full Time">Full Time</option>
-                  <option value="Part Time">Part Time</option>
-                  <option value="Internship">Internship</option>
-                </select>
+                ></textarea>
               </div>
-              <div className="flex gap-2 items-center">
-                <FaBuilding size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="companyName"
-                  defaultValue={jobData.companyName}
-                  placeholder="Company name"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Experience & Type</label>
+                <div className="flex gap-2">
+                  <select
+                    name="experienceLevel"
+                    defaultValue={jobData.experienceLevel}
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  >
+                    <option value="">Select Experience</option>
+                    <option value="Entry level">Entry level</option>
+                    <option value="Mid level">Mid level</option>
+                    <option value="Senior">Senior</option>
+                  </select>
+
+                  <select
+                    name="jobType"
+                    defaultValue={jobData.jobType}
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  >
+                    <option value="">Select a job Type</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Internship">Internship</option>
+                  </select>
+                </div>
               </div>
-              <div className="flex gap-2 items-center">
-                <RxVercelLogo size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="companyLogo"
-                  defaultValue={jobData.companyLogo}
-                  placeholder="Company logo"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Company Name</label>
+                <div className="flex gap-2 items-center">
+                  <FaBuilding size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="companyName"
+                    defaultValue={jobData.companyName}
+                    placeholder="Company name"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Company Logo URL</label>
+                <div className="flex gap-2 items-center">
+                  <RxVercelLogo size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="companyLogo"
+                    defaultValue={jobData.companyLogo}
+                    placeholder="Company logo"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
+              </div>
+
               <img
                 src="https://t4.ftcdn.net/jpg/10/04/10/53/360_F_1004105360_BaJnSx8DNE660NFMoi2GRB4rUPy1lbXr.jpg"
                 alt="company"
                 className="w-32 mx-auto my-4 animate-bounce rounded-full object-cover"
                 data-aos="zoom-in"
               />
+
               <button
                 type="submit"
                 className="cursor-pointer bg-mySecondary hover:bg-myPrimary text-white font-semibold py-2 rounded-md transition-all duration-300"

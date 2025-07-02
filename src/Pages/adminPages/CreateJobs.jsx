@@ -13,15 +13,15 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 
 function CreateJobs() {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
   const handleSubmitJob = async (e) => {
     e.preventDefault();
-  
+
     const title = e.target.title.value;
     const description = e.target.description.value;
     const requirements = e.target.requirements.value;
@@ -47,24 +47,23 @@ function CreateJobs() {
           companyLogo,
         },
         {
-          withCredentials: true, 
+          withCredentials: true,
         }
       );
-  
+
       if (res.data.success) {
         toast(res.data.message);
-        navigate("/Dashboard/admin-job")
+        navigate("/Dashboard/admin-job");
         e.target.reset();
       } else {
         toast.error(res.data.message || "Something went wrong");
       }
-      
+
     } catch (error) {
       console.error(error);
       toast.error(error?.response?.data?.message);
     }
   };
-  
 
   return (
     <div className="min-h-screen py-10 px-4">
@@ -77,46 +76,59 @@ function CreateJobs() {
           <div className="grid md:grid-cols-2 gap-6">
             {/* Left Side */}
             <div className="flex flex-col gap-4" data-aos="fade-right">
-              <div className="flex items-center gap-2">
-                <FaFileAlt size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Job title"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Job Title</label>
+                <div className="flex items-center gap-2">
+                  <FaFileAlt size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Job title"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <RiMoneyDollarCircleFill size={20}  className="text-xl text-myPrimary" />
-                <input
-                  type="number"
-                  name="salary"
-                  placeholder="Salary in LPA"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
-              </div>
-              <div className="flex items-center gap-2">
-              <DiRequirejs size={20}  className="text-xl text-myPrimary"  />
-              <input
-                type="text"
-                name="requirements"
-                placeholder="Requirements (e.g. React, Node, express)"
-                className="border-2 border-mySecondary w-full p-2 rounded-md"
-              />
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Salary (in LPA)</label>
+                <div className="flex items-center gap-2">
+                  <RiMoneyDollarCircleFill size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="number"
+                    name="salary"
+                    placeholder="Salary in LPA"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <IoLocationSharp  size={20} className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="location"
-                  placeholder="Office location"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Requirements</label>
+                <div className="flex items-center gap-2">
+                  <DiRequirejs size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="requirements"
+                    placeholder="Requirements (e.g. React, Node, Express)"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Location</label>
+                <div className="flex items-center gap-2">
+                  <IoLocationSharp size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="location"
+                    placeholder="Office location"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
               </div>
 
               <img
@@ -129,55 +141,70 @@ function CreateJobs() {
 
             {/* Right Side */}
             <div className="flex flex-col gap-4" data-aos="fade-left">
-              <textarea
-                name="description"
-                placeholder="Description about job"
-                className="border-2 border-mySecondary w-full p-2 rounded-md h-[100px]"
-                required
-              ></textarea>
-
-              <div className="flex gap-2">
-                <select
-                  name="experienceLevel"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Job Description</label>
+                <textarea
+                  name="description"
+                  placeholder="Description about job"
+                  className="border-2 border-mySecondary w-full p-2 rounded-md h-[100px]"
                   required
-                >
-                  <option value={"Entry level"}>Entry level</option>
-                  <option value={"Mid level"}>Mid level</option>
-                  <option value={"Senior"}>Senior</option>
-                </select>
-
-                <select
-                  name="jobType"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                >
-                  <option value={"Full Time"}>Full Time</option>
-                  <option value={"Part Time"}>Part Time</option>
-                  <option value={"Internship"}>Internship</option>
-                </select>
+                ></textarea>
               </div>
 
-              <div className="flex gap-2 items-center">
-                <FaBuilding size={20}  className="text-xl text-myPrimary" />
-                <input
-                  type="text"
-                  name="companyName"
-                  placeholder="Company name"
-                  className="border-2 border-mySecondary w-full p-2 rounded-md"
-                  required
-                />
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Experience Level & Job Type</label>
+                <div className="flex gap-2">
+                  <select
+                    name="experienceLevel"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  >
+                    <option value={""}>Slelect exprerience </option>
+                    <option value={"Entry level"}>Entry level</option>
+                    <option value={"Mid level"}>Mid level</option>
+                    <option value={"Senior"}>Senior</option>
+                  </select>
+
+                  <select
+                    name="jobType"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  >
+                    <option value={""}>Select a job type</option>
+                    <option value={"Full Time"}>Full Time</option>
+                    <option value={"Part Time"}>Part Time</option>
+                    <option value={"Internship"}>Internship</option>
+                  </select>
+                </div>
               </div>
-               <div className="flex gap-2 items-center">
-               <RxVercelLogo size={20}  className="text-xl text-myPrimary"  />
-              <input
-                type="text"
-                name="companyLogo"
-                placeholder="Company logo"
-                className="border-2 border-mySecondary w-full p-2 rounded-md"
-                required
-              />
-               </div>
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Company Name</label>
+                <div className="flex gap-2 items-center">
+                  <FaBuilding size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="companyName"
+                    placeholder="Company name"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-medium mb-1 text-gray-700">Company Logo URL</label>
+                <div className="flex gap-2 items-center">
+                  <RxVercelLogo size={20} className="text-xl text-myPrimary" />
+                  <input
+                    type="text"
+                    name="companyLogo"
+                    placeholder="Company logo"
+                    className="border-2 border-mySecondary w-full p-2 rounded-md"
+                    required
+                  />
+                </div>
+              </div>
 
               <img
                 src="https://t4.ftcdn.net/jpg/10/04/10/53/360_F_1004105360_BaJnSx8DNE660NFMoi2GRB4rUPy1lbXr.jpg"
