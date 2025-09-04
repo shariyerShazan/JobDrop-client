@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { USER_API_ENDPOINT } from "../utils/Api";
 import axios from "axios";
@@ -7,6 +7,10 @@ import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
 function Register() {
+
+useEffect(()=>{
+  document.title = "Register | JobDrop"
+}, [])
 
   const [eyeOpen, setEyeOpen] = useState(false)
   const navigate = useNavigate()

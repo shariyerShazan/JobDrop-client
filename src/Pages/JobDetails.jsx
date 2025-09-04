@@ -13,6 +13,12 @@ import { BsCurrencyDollar, BsClockHistory } from "react-icons/bs";
 import { FaBuilding, FaUserTie, FaTasks, FaSpinner, FaBriefcase } from "react-icons/fa";
 
 function JobDetails() {
+
+useEffect(()=>{
+  document.title = "Job Details | JobDrop"
+}, [])
+
+
   const { user } = useContext(MyContext);
   const { id } = useParams();
   const [job, setJob] = useState(null);

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/MyContext";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -6,6 +6,11 @@ import { USER_API_ENDPOINT } from "../utils/Api";
 import { useNavigate } from "react-router";
 
 function EditProfile() {
+  useEffect(()=>{
+    document.title = "Profile | JobDrop"
+  }, [])
+  
+
   const { user, setUser } = useContext(MyContext);
   const navigate = useNavigate();
 

@@ -11,6 +11,10 @@ import { FaSpinner } from "react-icons/fa";
 
 
 function Jobs() {
+  useEffect(()=>{
+    document.title = "Jobs | JobDrop"
+  }, [])
+  
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -7,6 +7,11 @@ import { USER_API_ENDPOINT } from "../utils/Api";
 import { MyContext } from "../context/MyContext";
 
 function LoginRegister() {
+
+useEffect(()=>{
+  document.title = "Register | login | JobDrop"
+}, [])
+
   const { setUser } = useContext(MyContext);
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);

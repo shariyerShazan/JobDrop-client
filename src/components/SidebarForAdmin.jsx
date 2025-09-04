@@ -15,16 +15,14 @@ function SidebarForAdmin() {
     { name: "Chat with Applicants", to: "chats", logo: <TiMessages size={20} /> },
   ];
 
-  const studentLinks = [
-    { name: "Create Job", to: "create-job", logo: <IoCreate size={20} /> },
-    { name: "Your Creation", to: "admin-job", logo: <FaRegFileAlt size={20} /> },
-    { name: "Applicants", to: "applicants", logo: <MdDownloadDone size={20} /> },
-  ];
+  // const studentLinks = [
+  //   { name: "Create Job", to: "create-job", logo: <IoCreate size={20} /> },
+  //   { name: "Your Creation", to: "admin-job", logo: <FaRegFileAlt size={20} /> },
+  //   { name: "Applicants", to: "applicants", logo: <MdDownloadDone size={20} /> },
+  // ];
 
   const getAllLinks = (role) => {
-    if (role === "Student") {
-      return studentLinks;
-    } else if (role === "Recruiter") {
+   if (role === "Recruiter") {
       return adminLinks;
     } else {
       return [];
