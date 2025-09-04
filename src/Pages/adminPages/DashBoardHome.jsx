@@ -4,6 +4,12 @@ import "aos/dist/aos.css";
 import { FaTimesCircle, FaBriefcase, FaClipboardList, FaCheckCircle } from "react-icons/fa";
 
 const DashBoardHome = () => {
+
+    useEffect(()=>{
+        document.title = "Dashboard | JobDrop"
+      }, [])
+      
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
