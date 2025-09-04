@@ -15,6 +15,11 @@ import { useNavigate } from 'react-router';
 function CreateJobs() {
   const navigate = useNavigate();
 
+   useEffect(()=>{
+      document.title = "CreateJobs | JobDrop"
+    }, [])
+    
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
